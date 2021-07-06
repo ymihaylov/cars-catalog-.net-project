@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Catalog</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CarsCatalog</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Catalog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h3>Audi</h3>
+        <main role="main" class="pb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="grid-item-wrapper grid-car-item-wrapper col-sm-4">
+                        <div class="card" style="width: 20rem;">
+                            <div class="card-img-wrapper">
+                                <img class="card-img-top" src="img/cars_examples/a3.jpeg?1" alt="Card image cap">
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">A3</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-wrapper grid-car-item-wrapper col-sm-4">
+                        <div class="card" style="width: 20rem;">
+                            <div class="card-img-wrapper">
+                                <img class="card-img-top" src="img/cars_examples/a4.jpeg" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">A4</h5>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-wrapper grid-car-item-wrapper col-sm-4">
+                        <div class="card" style="width: 20rem;">
+                            <div class="card-img-wrapper">
+                                <img class="card-img-top" src="img/cars_examples/a7.jpeg?1" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">A7</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-item-wrapper grid-car-item-wrapper col-sm-4">
+                        <div class="card" style="width: 20rem;">
+                            <div class="card-img-wrapper">
+                                <img class="card-img-top" src="img/cars_examples/a7.jpeg?1" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">A7</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - CarsCatalog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js" asp-append-version="true"></script>
+</body>
+</html>
