@@ -1,22 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+@{ ViewData["Title"] = "Марки"; }
+@model IEnumerable<CarsCatalog.Models.CarMake>
+<h3>Марки</h3>
 <div class="container">
     <div class="row">
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
-        </div>
-        <div class="col-sm">
-            One of three columns
-        </div>
+        @foreach (var carMake in Model)
+        {
+        <a asp-route="car_models"
+           asp-route-id="@carMake.Id">
+            <div class="grid-item-wrapper col-sm-3">
+                <div class="card" style="width: 12rem;">
+                    <div class="card-img-wrapper">
+                        <img class="card-img-top" src="img/logos/@carMake.Logo" alt="Card image cap">
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">@carMake.Name</h5>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
     </div>
 </div>
-
-@*<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>*@

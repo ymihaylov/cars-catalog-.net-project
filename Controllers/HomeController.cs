@@ -7,21 +7,71 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CarsCatalog.Models;
 
+using Microsoft.EntityFrameworkCore;
+using CarsCatalog.Context;
+
 namespace CarsCatalog.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CarsCatalogContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(CarsCatalogContext context, ILogger<HomeController> logger)
         {
             _logger = logger;
+            _context = context;
+            
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            
-            return View();
+            //var std = new CarMake()
+            //{
+            //    Name = "Skoda"
+            //};
+
+            //_context.CarMake.Add(std);
+            //_context.SaveChanges();
+
+            var carMakes = _context.CarMake.ToList();
+            return View(carMakes);
+        }
+
+        public async Task<IActionResult> CarModelsAsync(int id)
+        {
+            CarMake carMake = _context
+                .CarMake
+                .Include(carMake => carMake.CarModels)
+                .Single(carMake => carMake.Id == id);
+
+            return View(carMake.CarModels);
+        }
+
+        public async Task<IActionResult> ShowCarAsync(int id)
+        {
+            CarModel carModel = _context
+                .CarModel
+                .Include(carModel => carModel.CarMake)
+                .Include(carModel => carModel.Comments.OrderByDescending(comment => comment.CreatedDate))
+                .Single(carModel => carModel.Id == id);
+
+            return View(carModel);
+        }
+
+        [HttpPost]
+        public IActionResult PostAComment(string comment, int carModelId)
+        {
+            CarModel carModel = _context.CarModel.Single(carModel => carModel.Id == carModelId);
+            Comment commentEntry = new Comment();
+            commentEntry.CarModel = carModel;
+            commentEntry.Description = comment;
+
+            _context.Comments.Add(commentEntry);
+            _context.SaveChanges();
+
+            return new OkResult();
         }
 
         public IActionResult Privacy()

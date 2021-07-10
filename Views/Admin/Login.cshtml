@@ -1,0 +1,36 @@
+﻿@model CarsCatalog.Models.LoginViewModel 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Catalog - Admin login</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/signin.css" />
+</head>
+
+<body class="text-center" data-new-gr-c-s-check-loaded="14.1019.0" data-gr-ext-installed="">
+
+    <form class="form-signin" method="post" asp-controller="Admin" asp-action="Login" asp-route-returnurl="/admin">
+        <h2>Cars Catalog Administration</h2><br />
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label asp-for="Username" for="Username" class="sr-only">Username</label>
+        <input asp-for="Username" type="text" id="Username" class="form-control" placeholder="Username" required="" autofocus="">
+        <span asp-validation-for="Username"></span>
+
+        <label asp-for="Password" for="Password" class="sr-only">Password</label>
+        <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <span asp-validation-for="Password"></span>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2021</p>
+    </form>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js" asp-append-version="true"></script>
+</body>
+</html>

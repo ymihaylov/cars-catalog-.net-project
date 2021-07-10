@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Catalog</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CarsCatalog</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Catalog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h3>Audi A3</h3>
+        <main role="main" class="pb-3">
+            <div class="container">
+                <div class="row">
+                    <div id="car-photos-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="img/sliders/1.jpeg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/sliders/1.jpg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/sliders/3.jpeg" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/sliders/3.jpg" alt="Third slide">
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#car-photos-carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#car-photos-carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row car-article-row">
+                    <article>
+                        <p>Луксозен семеен автомобил от среден клас, в производство от 2000 до 2006 г. в Германия и Китай. Сглобява се на платформата на Volkswagen Group B6 и има версии седан, комби и кабриолет. 2006 излиза фейслифтът – B7, с малки външни и вътрешни промени.</p>
+
+                        <p>Окачването е стандартно с алуминиеви носачи. Предаването е предно и 4х4. При връщане на газта ще си проличи дали има странични шумове, разбити карета и проблеми по системата.</p>
+
+                        <p>Интериорът е качествено сглобен, има версии с кожен салон, алкантара и много екстри. Бутоните се износват на висока температура. Подлакътниците често са счупени. Пространството на задната седалка отново е тясно.</p>
+
+                        <p>Автомобилът е много стар и със сигурност е претърпявал ремонти, при които е демонтирана цялата предна част. Това може да обясни по-големите фуги между бронята и калниците. Почиствайте редовно от мръсотия и шума пространството в нишите под началото на предното стъкло и под капака. Внимавайте с маркучите на казанчето на охладителната течност.</p>
+
+                        <p><strong>Двигатели</strong></p>
+
+                        <p><strong>Бензинови</strong></p>
+
+                        <p>1,6 със 102 к.с.</p>
+
+                        <p>1,8 Turbo със 150, 163 и 190 к.с., най-търсен е най-мощният, защото с тунинг гони S4. Проверявайте състоянието на турбината. На 100&nbsp;000 км почиствайте цедката на маслената помпа.</p>
+
+                        <p>2,0 със 136 к.с. и 2,0 FSI със 150 к.с. Харчат масло и това е нормално. Ползвайте добавки, както на всички двигатели. FSI не позволява да се поставя газова уредба.</p>
+
+                        <p>2,4 V6 със 170 к.с. Имат проблеми&nbsp; блоковете.</p>
+
+                        <p>3,0 V6 с 220 к.с. Проверявайте на всички V6 системата за охлаждане и бубините.</p>
+
+                        <p>S4 4,2 V8 &nbsp;с 344 к.с. Чудесен двигател, но капризен и много лаком. На 6000 км сменяйте масло и филтри.</p>
+
+                        <p><strong>Дизелови </strong></p>
+
+                        <p>1,9 TDI със 100, 115 и 133 к.с. Много надежден двигател и евтин за обслужване, но трябва да се поддържа редовно.</p>
+
+                        <p>2,5 V6 TDI със 155, 163 и 180 к.с. Не много надежден, харчи масло и често се чупи.</p>
+
+                        <p><strong>Предавателни кутии</strong></p>
+
+                        <p>5- и 6-степенна механична , много надеждни, при дизеловите мотори съединителите са скъпи за подмяна.</p>
+
+                        <p>Multitronic при предното предаване&nbsp; -много ненадеждна и не я препоръчваме.</p>
+
+                        <p>6-степенна автоматична Steptronic, много по-надеждна, може да се обслужва и не е много скъпа за поддръжка.</p>
+
+                        <p><strong>Заключение</strong></p>
+
+                        <p>Ако автомобилът е добре поддържан, ще върши добра работа. Но имайте предвид, че са стари и с времето леки проблеми са неминуеми.</p>
+                    </article>
+                </div>
+
+                <div class="row comments-row">
+                    <h4>Коментари</h4>
+                </div>
+
+
+                <div id="car-comments-form-wrapper" class="form-group">
+                    <form>
+                        <textarea class="form-control" rows="4" placeholder="Споделете своето мнение и опит за модела тук:"></textarea>
+                    </form>
+
+                    <button type="submit" class="btn btn-primary">Изпрати</button>
+                </div>
+
+                <div id="latest-comments-wrapper">
+                    <div class="row">
+                        <h5>Последни</h5>
+                    </div>
+
+                    <div class="row">
+                        <h6>На 06.07.2021 г.</h6>
+                        <p>Попринцип 2.5 v6 150 ТДИ е при б5цата,а при Б6цата е 155,163 и 180коня,които са с новите дюзи.Ние имаме 180тката от 15години насам и е на 290 хиляди за сега сме нямали никакви ядове,но като цяло 2.5то е по скоро да се кара извънградско.</p>
+                    </div>
+
+                    <div class="row">
+                        <h6>На 04.07.2021 г.</h6>
+                        <p>А4 Б6-моята любима кола! Ще допълня малко информация:2.5 не са чак толкова кофти,колкото казват всички.Мой приятел кара 2.5,направо е чук,но както казват и хората по-долу-зависи как е поддържана колата.Създават понякога проблеми със задните буталца на спирачките-задържат и трудно се връщат обратно.Но като цяло А4 Б6 е една страхотна кола.</p>
+                    </div>
+
+                    <div class="row">
+                        <h6>На 03.07.2021 г.</h6>
+                        <p>Страхотен автомобил, комфортен, надежден и доста добре изглеждащ за годините си. Както казва bri4ka е като лего, имам B6 avant 1.9TDI, търсих доста време читав екземпляр, в крайна сметка открих и го карам вече почти 3г. За този период съм сменил 2 носача по окачването (бяха оригиналните още) + първоначалното обслужване всички ремъци ролки и т.н + виско на охлаждащата перка. Колата е добра, пъргава с 1 ремапче става трепач. Благодаря на bri4ka, че създадоха като цяло канала, сайта, и че предоставят информация от автомобилния свят. Поздрави!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Cars Catalog - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>

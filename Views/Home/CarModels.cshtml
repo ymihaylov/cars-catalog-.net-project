@@ -1,0 +1,29 @@
+﻿@{ ViewData["Title"] = "Модели"; }
+@model IEnumerable<CarsCatalog.Models.CarModel>
+
+<h3>Модели</h3>
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                @foreach (var carModel in Model)
+                {
+                    <a  asp-route="show_car"
+                        asp-route-id="@carModel.Id">
+                        <div class="grid-item-wrapper grid-car-item-wrapper col-sm-4">
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-img-wrapper">
+                                    <img class="card-img-top" src="@carModel.Photo" alt="Card image cap">
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">@carModel.Name</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

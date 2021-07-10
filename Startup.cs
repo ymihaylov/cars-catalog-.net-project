@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CarsCatalog.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace CarsCatalog
 {
@@ -23,6 +26,7 @@ namespace CarsCatalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CarsCatalogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyDatabase")));
             services.AddControllersWithViews();
         }
 
@@ -51,6 +55,27 @@ namespace CarsCatalog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "car_models",
+                    pattern: "car_models/{id:int}",
+                    defaults: new { controller = "Home", action = "CarModels", });
+
+                endpoints.MapControllerRoute(
+                    name: "show_car",
+                    pattern: "show_car/{id:int}",
+                    defaults: new { controller = "Home", action = "ShowCar", });
+
+                endpoints.MapControllerRoute(
+                    name: "post_a_comment",
+                    pattern: "post_a_comment",
+                    defaults: new { controller = "Home", action = "PostAComment", });
+
+                //endpoints.MapGet("/car_models/{car_make_id:int}", async context =>
+                //{
+                //    var carMakeId = context.Request.RouteValues["car_make_id"];
+                //    await context.Response.WriteAsync($"Hello {carMakeId}!");
+                //});
             });
         }
     }

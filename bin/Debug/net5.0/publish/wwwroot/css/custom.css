@@ -1,0 +1,85 @@
+﻿body {
+}
+
+.grid-item-wrapper {
+    margin-bottom: 1.6em;
+}
+
+
+/* Grid Items */
+.grid-item-wrapper img.card-img-top {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.grid-item-wrapper .card-img-wrapper {
+    width: 100%;
+    height: 100px;
+}
+
+.grid-car-item-wrapper .card-img-wrapper {
+    height: 150px;
+}
+
+.grid-item-wrapper .card-body {
+    padding-bottom: 0;
+}
+
+/* Carousel */
+#car-photos-carousel {
+    width: 100%;
+}
+
+#car-photos-carousel .carousel-inner {
+    height: 400px;
+    max-height: 400px;
+}
+
+#car-photos-carousel .carousel-inner .carousel-item {
+    height: 400px;
+    max-height: 400px;
+}
+
+#car-photos-carousel .carousel-inner img {
+    width: auto !important;
+    height: auto;
+    max-width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+/* Car article */
+.car-article-row {
+    margin-top: 30px;
+}
+
+/* Comments */
+.comments-row {
+    border-top: 1px solid black;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#car-comments-form-wrapper button {
+    margin-top: 10px;
+}
+
+#latest-comments-wrapper h5 {
+    margin-top: 10px;
+}
+
+#latest-comments-wrapper .row {
+    margin-bottom: 10px;
+}
