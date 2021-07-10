@@ -14,7 +14,7 @@
         "outputPath": "/Users/ymihaylov/Projects/CarsCatalog/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/ymihaylov/.nuget/NuGet/NuGet.Config"
+          "/Users/ymihaylov/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -38,6 +38,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Coravel.Pro": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "CoreAdmin": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"

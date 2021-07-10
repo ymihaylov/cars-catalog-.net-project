@@ -14,8 +14,11 @@
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="PostdData\" />
     <None Remove="Views\Admin\" />
+    <None Remove="CoreAdmin" />
+    <None Remove="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Coravel.Pro" Version="4.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -31,14 +34,17 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
+    <PackageReference Include="CoreAdmin" Version="1.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Context\" />
     <Folder Include="wwwroot\img\uploads\" />
     <Folder Include="PostdData\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\uploads\" />
+    <Content Remove="Views\Admin\CarModels.cshtml" />
   </ItemGroup>
 </Project>

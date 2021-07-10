@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using CarsCatalog.Models;
+using System.Threading.Tasks;
 
 namespace CarsCatalog.Controllers
 {
@@ -15,6 +16,12 @@ namespace CarsCatalog.Controllers
         {
             var model = new LoginViewModel { ReturnUrl = returnUrl };
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult CarModels()
+        {
+            return View("~/Views/Home/CarModels");
         }
     }
 }

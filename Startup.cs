@@ -55,7 +55,7 @@ namespace CarsCatalog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                
                 endpoints.MapControllerRoute(
                     name: "car_models",
                     pattern: "car_models/{id:int}",
@@ -70,6 +70,16 @@ namespace CarsCatalog
                     name: "post_a_comment",
                     pattern: "post_a_comment",
                     defaults: new { controller = "Home", action = "PostAComment", });
+
+                endpoints.MapControllerRoute(
+                    name: "admin.car_models.list",
+                    pattern: "admin/car_models_list",
+                    defaults: new { controller = "Admin", action = "CarModels", });
+
+                endpoints.MapControllerRoute(
+                    name: "CarModels",
+                    pattern: "CarModels",
+                    defaults: new { controller = "CarModels", action = "CarModels", });
 
                 //endpoints.MapGet("/car_models/{car_make_id:int}", async context =>
                 //{
