@@ -16,6 +16,9 @@ namespace CarsCatalog.Models
 
         public CarMake CarMake { get; set; }
 
+        public int CarMakeId {get; set;}
+
         public ICollection<Comment> Comments { get; set; }
     }
+
 }

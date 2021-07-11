@@ -1,45 +1,51 @@
 ﻿<Properties StartupConfiguration="{90457B8B-028A-4E48-A613-8179560DAB2F}|Default">
   <MonoDevelop.Ide.ItemProperties.CarsCatalog PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/CarModelsController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/CarModels/Edit.cshtml">
     <Files>
-      <File FileName="Models/CarModel.cs" Line="7" Column="1" />
-      <File FileName="Startup.cs" />
-      <File FileName="Views/CarModels/Index.cshtml" />
-      <File FileName="Views/_ViewStart.cshtml" />
-      <File FileName="Views/CarModels/Edit.cshtml" />
-      <File FileName="ViewModels/CarModelCrudViewModel.cs" Line="12" Column="34" />
-      <File FileName="Controllers/HomeController.cs" />
-      <File FileName="Controllers/CarModelsController.cs" Line="106" Column="1" />
+      <File FileName="Views/CarModels/Edit.cshtml" Line="5" Column="2" IsPinned="True" />
+      <File FileName="Models/CarModel.cs" Line="19" Column="26" />
+      <File FileName="Startup.cs" Line="82" Column="77" />
+      <File FileName="Views/_ViewStart.cshtml" Line="2" Column="1" />
+      <File FileName="Controllers/CarModelsController.cs" Line="53" Column="42" />
+      <File FileName="Controllers/HomeController.cs" Line="30" Column="45" />
+      <File FileName="Models/CarMake.cs" Line="9" Column="14" />
+      <File FileName="Views/CarModels/Create.cshtml" Line="3" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CarsCatalog" expanded="True">
             <Node name="CarsCatalog" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="CarModelsController.cs" selected="True" />
-              </Node>
+              <Node name="Context" expanded="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="CarModels" expanded="True" />
+                <Node name="CarModels" expanded="True">
+                  <Node name="Edit.cshtml" selected="True" />
+                </Node>
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="img" expanded="True" />
+                <Node name="img" expanded="True">
+                  <Node name="uploads" expanded="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/ymihaylov/Projects/CarsCatalog/Controllers/CarModelsController.cs" relfile="Controllers/CarModelsController.cs" line="106" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

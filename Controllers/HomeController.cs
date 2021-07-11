@@ -27,14 +27,6 @@ namespace CarsCatalog.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            //var std = new CarMake()
-            //{
-            //    Name = "Skoda"
-            //};
-
-            //_context.CarMake.Add(std);
-            //_context.SaveChanges();
-
             var carMakes = _context.CarMake.ToList();
             return View(carMakes);
         }

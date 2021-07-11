@@ -194,6 +194,5 @@
 /Users/ymihaylov/Projects/CarsCatalog/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/CarModels/Create.cshtml.g.cs
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/CarModels/Delete.cshtml.g.cs
-/Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/CarModels/Details.cshtml.g.cs
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/CarModels/Edit.cshtml.g.cs
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/CarModels/Index.cshtml.g.cs

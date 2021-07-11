@@ -70,7 +70,7 @@ namespace CarsCatalog.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CarModelId")
+                    b.Property<int>("CarModelId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -99,7 +99,9 @@ namespace CarsCatalog.Migrations
                 {
                     b.HasOne("CarsCatalog.Models.CarModel", "CarModel")
                         .WithMany("Comments")
-                        .HasForeignKey("CarModelId");
+                        .HasForeignKey("CarModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CarModel");
                 });

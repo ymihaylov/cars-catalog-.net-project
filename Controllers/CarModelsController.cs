@@ -27,31 +27,18 @@ namespace CarsCatalog.Controllers
         // GET: CarModels
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CarModel.Include(carModel => carModel).ToListAsync());
-        }
-
-        // GET: CarModels/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var carModel = await _context.CarModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (carModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(carModel);
+            return View(await _context.CarModel.Include(carModel => carModel.CarMake).ToListAsync());
         }
 
         // GET: CarModels/Create
         public IActionResult Create()
         {
-            return View();
+            CarModelCrudViewModel carModelCrudViewModel = new CarModelCrudViewModel()
+            {
+                CarMakeId = new SelectList(_context.CarMake, "Id", "Name"),
+            };
+
+            return View(carModelCrudViewModel);
         }
 
         // POST: CarModels/Create
@@ -59,15 +46,29 @@ namespace CarsCatalog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Photo,Description")] CarModel carModel)
+        public async Task<IActionResult> Create([Bind("Id,Name,Photo,Description,SelectedCarMakeId")] CarModelCrudViewModel carViewModel)
         {
             if (ModelState.IsValid)
             {
+                CarModel carModel = new()
+                {
+                    Name = carViewModel.Name,
+                    Description = carViewModel.Description,
+                    CarMakeId = carViewModel.SelectedCarMakeId
+                };
+
+                string uniqueFileName = UploadedFile(carViewModel);
+
+                if (carViewModel.Photo != null)
+                {
+                    carModel.Photo = uniqueFileName;
+                }
+
                 _context.Add(carModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(carModel);
+            return View(carViewModel);
         }
 
         // GET: CarModels/Edit/5
@@ -78,7 +79,11 @@ namespace CarsCatalog.Controllers
                 return NotFound();
             }
 
-            var carModel = await _context.CarModel.FindAsync(id);
+            CarModel carModel = _context
+                .CarModel
+                .Include(carModel => carModel.CarMake)
+                .Single(carModel => carModel.Id == id);
+
             if (carModel == null)
             {
                 return NotFound();
@@ -88,9 +93,12 @@ namespace CarsCatalog.Controllers
             {
                 Id = carModel.Id,
                 Name = carModel.Name,
-                Description = carModel.Description
-
+                Description = carModel.Description,
+                PhotoPath = carModel.Photo,
+                CarMakeId = new SelectList(_context.CarMake, "Id", "Name", carModel.CarMakeId),
+                SelectedCarMakeId = carModel.CarMakeId
             };
+
             return View(carModelCrudViewModel);
         }
 
@@ -99,48 +107,29 @@ namespace CarsCatalog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Photo,Description")] CarModelCrudViewModel carViewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Photo,Description,SelectedCarMakeId")] CarModelCrudViewModel carViewModel)
         {
-
-
-            //if (id != carModel.Id)
-            //{
-            //    return NotFound();
-            //}
-
             if (ModelState.IsValid)
             {
                 string uniqueFileName = UploadedFile(carViewModel);
                 CarModel carModel = _context
                     .CarModel
+                    .Include(carModel => carModel.CarMake)
                     .Single(carModel => carModel.Id == id);
 
                 carModel.Name = carViewModel.Name;
                 carModel.Description = carViewModel.Description;
-                carModel.Photo = uniqueFileName;
+                carModel.CarMakeId = carViewModel.SelectedCarMakeId;
 
+                if (carViewModel.Photo != null)
+                {
+                    carModel.Photo = uniqueFileName;
+                }
+                
                 _context.Update(carModel);
                 await _context.SaveChangesAsync();
-
-                //    try
-                //    {
-                //        _context.Update(carModel);
-                //        await _context.SaveChangesAsync();
-                //    }
-                //    catch (DbUpdateConcurrencyException)
-                //    {
-                //        if (!CarModelExists(carModel.Id))
-                //        {
-                //            return NotFound();
-                //        }
-                //        else
-                //        {
-                //            throw;
-                //        }
-                //    }
-                //    return RedirectToAction(nameof(Index));
             }
-            return View(carViewModel);
+            return RedirectToAction(nameof(Index));
         }
 
         private string UploadedFile(CarModelCrudViewModel model)
@@ -158,7 +147,7 @@ namespace CarsCatalog.Controllers
                 }
             }
 
-            return uniqueFileName;
+            return "/img/uploads/" + uniqueFileName;
         }
 
         // GET: CarModels/Delete/5
@@ -169,8 +158,7 @@ namespace CarsCatalog.Controllers
                 return NotFound();
             }
 
-            var carModel = await _context.CarModel
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var carModel = _context.CarModel.Include(carModel => carModel.CarMake).Single(carModel => carModel.Id == id);
             if (carModel == null)
             {
                 return NotFound();

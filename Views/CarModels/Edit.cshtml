@@ -1,8 +1,11 @@
 @model CarsCatalog.ViewModels.CarModelCrudViewModel
 
-@{
-    ViewData["Title"] = "Edit";
+@{ ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/lib/summernote/summernote.min.css" />
 }
 
 <h1>Edit</h1>
@@ -14,6 +17,13 @@
         <form enctype="multipart/form-data" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="SelectedCarMakeId" class="control-label">Car Make</label>
+                <select asp-for="SelectedCarMakeId" class="form-control" asp-items="@Model.CarMakeId"></select>
+                <span asp-validation-for="SelectedCarMakeId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -21,12 +31,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Photo" class="control-label"></label>
+                <div><img width="200px" style="margin-bottom: 20px; border-radius: 4px;" src="@Model.PhotoPath" /></div>
                 <input type="file" asp-for="Photo" class="form-control" />
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control" id="car-model-description-input"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,4 +53,13 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/summernote/summernote.min.js"></script>
+    <script>$(document).ready(function () {
+            $('#car-model-description-input').summernote({
+                height: 400,
+                width: 1000
+            });
+    });
+    </script>
+
 }

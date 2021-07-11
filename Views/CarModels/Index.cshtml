@@ -5,26 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Каталог</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Добави нов модел</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Photo)
+                Снимка
             </th>
-            <th>Make</th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>Actions</th>
+            <th>Марка</th>
+            <th>Модел</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
         <tr>
             <td class="w-25">
                 <img src="@item.Photo" class="img-fluid img-thumbnail" alt="">
@@ -36,11 +34,10 @@
             </td>
 
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактирай</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Изтрий</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

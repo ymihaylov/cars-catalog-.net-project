@@ -17,6 +17,13 @@ namespace CarsCatalog.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.CarModel)
+                .WithMany(c => c.Comments)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
