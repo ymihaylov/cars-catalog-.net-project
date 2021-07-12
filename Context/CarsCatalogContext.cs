@@ -1,11 +1,12 @@
 ﻿using System;
 using CarsCatalog.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace CarsCatalog.Context
 {
-    public class CarsCatalogContext : DbContext
+    public class CarsCatalogContext : IdentityDbContext
     {
         public CarsCatalogContext(DbContextOptions<CarsCatalogContext> options) : base(options)
         {

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using CarsCatalog.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarsCatalog
 {
@@ -22,12 +23,17 @@ namespace CarsCatalog
         }
 
         public IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CarsCatalogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyDatabase")));
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<CarsCatalogContext>();
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +54,7 @@ namespace CarsCatalog
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -80,6 +87,8 @@ namespace CarsCatalog
                     name: "CarModels",
                     pattern: "CarModels",
                     defaults: new { controller = "CarModels", action = "CarModels", });
+
+                endpoints.MapRazorPages();
 
                 //endpoints.MapGet("/car_models/{car_make_id:int}", async context =>
                 //{

@@ -10,6 +10,7 @@ using CarsCatalog.Models;
 using CarsCatalog.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarsCatalog.Controllers
 {
@@ -25,12 +26,14 @@ namespace CarsCatalog.Controllers
         }
 
         // GET: CarModels
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.CarModel.Include(carModel => carModel.CarMake).ToListAsync());
         }
 
         // GET: CarModels/Create
+        [Authorize]
         public IActionResult Create()
         {
             CarModelCrudViewModel carModelCrudViewModel = new CarModelCrudViewModel()
@@ -46,6 +49,7 @@ namespace CarsCatalog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,Photo,Description,SelectedCarMakeId")] CarModelCrudViewModel carViewModel)
         {
             if (ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace CarsCatalog.Controllers
         }
 
         // GET: CarModels/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -107,6 +112,7 @@ namespace CarsCatalog.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Photo,Description,SelectedCarMakeId")] CarModelCrudViewModel carViewModel)
         {
             if (ModelState.IsValid)
@@ -151,6 +157,7 @@ namespace CarsCatalog.Controllers
         }
 
         // GET: CarModels/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
