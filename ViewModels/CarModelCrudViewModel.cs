@@ -12,6 +12,7 @@ namespace CarsCatalog.ViewModels
         public CarModelCrudViewModel()
         {
         }
+
         public int Id { get; set; }
         public string Name { get; set; }
 
@@ -26,5 +27,11 @@ namespace CarsCatalog.ViewModels
         public SelectList CarMakeId { get; set; }
 
         public List<Comment> CommentsWaitingApproval { get; set; }
+
+        public PhotosViewModel PhotosViewModel { get; set; }
+
+        public List<IFormFile> Photos { get; set; }
+
+        public List<Photo> PhotosEntities { get; set; }
     }
 }

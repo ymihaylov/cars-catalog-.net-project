@@ -11,6 +11,7 @@ using CarsCatalog.ViewModels;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace CarsCatalog.Controllers
 {
@@ -88,6 +89,7 @@ namespace CarsCatalog.Controllers
                 .CarModel
                 .Include(carModel => carModel.CarMake)
                 .Include(carModel => carModel.Comments)
+                .Include(carModel => carModel.Photos)
                 .Single(carModel => carModel.Id == id);
 
             if (carModel == null)
@@ -95,6 +97,12 @@ namespace CarsCatalog.Controllers
                 return NotFound();
             }
 
+            PhotosViewModel photosViewModel = new PhotosViewModel()
+            {
+                
+            };
+
+            List<Photo> PhotosEntities = carModel.Photos.ToList();
             CarModelCrudViewModel carModelCrudViewModel = new CarModelCrudViewModel()
             {
                 Id = carModel.Id,
@@ -107,7 +115,8 @@ namespace CarsCatalog.Controllers
                     .Comments
                     .Where(comment => comment.Approved == false && comment.Disapproved == false)
                     .OrderByDescending(comment => comment.CreatedDate)
-                    .ToList()
+                    .ToList(),
+                PhotosEntities = PhotosEntities,
             };
 
             return View(carModelCrudViewModel);
@@ -142,6 +151,54 @@ namespace CarsCatalog.Controllers
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
+        }
+
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> UploadPhotos(int id, [Bind("Id,Name,Photo,Description,SelectedCarMakeId,Photos")] CarModelCrudViewModel carViewModel)
+        {
+            string uniqueFileName = null;
+
+            foreach (IFormFile photoFile in carViewModel.Photos)
+            {
+                if (photoFile != null)
+                {
+                    uniqueFileName = UploadPhoto(photoFile);
+                    Photo photoModel = new Photo();
+                    photoModel.CarModelId = id;
+                    photoModel.Path = uniqueFileName;
+
+                    _context.Photo.Add(photoModel);
+                }
+            }
+
+            
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        //private void UploadedPhotosByPhotosViewModel(carViewModel)
+        //{
+        //    string uniqueFileName = UploadPhotos(carViewModel.PhotosViewModel);
+
+
+        //}
+
+        private string UploadPhoto(IFormFile file)
+        {
+            string uniqueFileName = null;
+
+            string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "img/uploads");
+            uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyTo(fileStream);
+            }
+            
+
+            return "/img/uploads/" + uniqueFileName;
         }
 
         private string UploadedFile(CarModelCrudViewModel model)
@@ -213,6 +270,17 @@ namespace CarsCatalog.Controllers
             }
 
             _context.Update(comment);
+            _context.SaveChanges();
+
+            return new OkResult();
+        }
+
+        [HttpPost]
+        public IActionResult DeletePhoto(int photoId)
+        {
+            var photo = _context.Photo.Single(photo => photo.Id == photoId);
+
+            _context.Photo.Remove(photo);
             _context.SaveChanges();
 
             return new OkResult();

@@ -47,6 +47,7 @@ namespace CarsCatalog.Controllers
                 .CarModel
                 .Include(carModel => carModel.CarMake)
                 .Include(carModel => carModel.Comments.Where(comment => comment.Approved == true && comment.Disapproved == false).OrderByDescending(comment => comment.CreatedDate))
+                .Include(carModel => carModel.Photos)
                 .Single(carModel => carModel.Id == id);
 
             return View(carModel);

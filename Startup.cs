@@ -84,6 +84,11 @@ namespace CarsCatalog
                     defaults: new { controller = "CarModels", action = "ChangeCommentStatus", });
 
                 endpoints.MapControllerRoute(
+                    name: "CarModels.DeletePhoto",
+                    pattern: "/CarModels/DeletePhoto",
+                    defaults: new { controller = "CarModels", action = "DeletePhoto", });
+
+                endpoints.MapControllerRoute(
                     name: "post_a_comment",
                     pattern: "post_a_comment",
                     defaults: new { controller = "Home", action = "PostAComment", });

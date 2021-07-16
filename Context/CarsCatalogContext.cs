@@ -15,6 +15,7 @@ namespace CarsCatalog.Context
         public DbSet<CarMake> CarMake { get; set; }
         public DbSet<CarModel> CarModel { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Photo> Photo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

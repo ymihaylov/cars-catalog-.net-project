@@ -3,19 +3,14 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Views/CarModels/Edit.cshtml">
     <Files>
       <File FileName="Migrations/20210710213344_UpdateDB7.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Controllers/CommentsController.cs" Line="41" Column="26" IsPinned="True" />
       <File FileName="Models/CarMake.cs" Line="1" Column="1" />
       <File FileName="Views/Shared/_Layout.cshtml" Line="48" Column="154" />
-      <File FileName="Startup.cs" Line="84" Column="92" />
-      <File FileName="Program.cs" />
-      <File FileName="Models/CarModel.cs" Line="21" Column="41" />
-      <File FileName="Controllers/CarModelsController.cs" Line="108" Column="97" />
-      <File FileName="Views/CarModels/Edit.cshtml" Line="19" Column="174" />
-      <File FileName="Models/Comment.cs" Line="23" Column="33" />
-      <File FileName="Views/Home/ShowCar.cshtml" Line="1" Column="1" />
-      <File FileName="wwwroot/js/site.js" Line="34" Column="98" />
-      <File FileName="Controllers/HomeController.cs" Line="81" Column="46" />
-      <File FileName="Views/CarModels/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Startup.cs" Line="89" Column="84" />
+      <File FileName="Migrations/20210716131609_UpdateDB14.cs" Line="1" Column="1" />
+      <File FileName="wwwroot/js/site.js" Line="1" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="50" Column="53" />
+      <File FileName="Views/CarModels/Edit.cshtml" Line="87" Column="82" />
+      <File FileName="Controllers/CarModelsController.cs" Line="281" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -43,6 +38,9 @@
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

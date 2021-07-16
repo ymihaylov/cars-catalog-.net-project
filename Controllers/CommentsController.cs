@@ -22,14 +22,6 @@ namespace CarsCatalog.Controllers
 
         public IActionResult CommentsWaitingApproval()
         {
-
-            //var comments = _context
-            //    .Comments
-            //    .Select(comment => new { comment.CarModel, comment.CarModel.CarMake })
-            //    //.Where(comment => comment.Approved == false)
-            //    .Include(_ => _.CarModel)
-            //    .ToList();
-
             var list = new List<Comment>();
 
             list.AddRange(_context.Set<Comment>()

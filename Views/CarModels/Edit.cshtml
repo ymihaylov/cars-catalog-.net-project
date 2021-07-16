@@ -15,6 +15,11 @@
     <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="home" aria-selected="true">Форма за редактиране</a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" id="photos-tab" data-toggle="tab" href="#photos" role="tab" aria-controls="photos" aria-selected="false">Допълнителни снимки</a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pending-comments" role="tab" aria-controls="profile" aria-selected="false">Коментари чакащи одобрение (@Model.CommentsWaitingApproval.Count)</a>
     </li>
@@ -57,6 +62,36 @@
         </div>
     </div>
 
+    <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">
+        <div class="row">
+            <div class="col-md-4">
+                <form enctype="multipart/form-data" asp-action="UploadPhotos">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="form-group">
+                        <label class="control-label">Качете нови снимки</label>
+
+                        <input type="file" name="Photos" class="form-control" multiple />
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Запази" class="btn btn-primary" />
+                    </div>
+
+                    @foreach (var PhotoEntity in Model.PhotosEntities)
+                    {
+                        <div>
+                            <img width="200px" style="margin-bottom: 20px; border-radius: 4px;" src="@PhotoEntity.Path" />
+                            <a href="#" data-photo-id="@PhotoEntity.Id" class="text-danger photo-entity-delete-btn">Delete Photo</a>
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="tab-pane fade" id="pending-comments" role="tabpanel" aria-labelledby="pending-comments-tab">
         <table class="table">
             <thead>
@@ -69,19 +104,20 @@
             <tbody>
                 @foreach (var comment in Model.CommentsWaitingApproval)
                 {
-                    <tr>
-                        <td>@comment.CreatedDate</td>
-                        <td>@comment.Description</td>
+    <tr>
+        <td>@comment.CreatedDate</td>
+        <td>@comment.Description</td>
 
-                        <td>
-                            <a href="#" data-comment-id="@comment.Id" data-action="approve" class="btn btn-success comments-action">
-                                Одобри
-                            </a>
-                            <a href="#" data-comment-id="@comment.Id" data-action="disaprove" class="btn btn-danger comments-action">
-                                Отхвърли
-                            </a>
-                        </td>
-                    </tr>}
+        <td>
+            <a href="#" data-comment-id="@comment.Id" data-action="approve" class="btn btn-success comments-action">
+                Одобри
+            </a>
+            <a href="#" data-comment-id="@comment.Id" data-action="disaprove" class="btn btn-danger comments-action">
+                Отхвърли
+            </a>
+        </td>
+    </tr>
+}
             </tbody>
         </table>
     </div>
@@ -114,6 +150,21 @@
                     $tr.remove();
                 }
             });
-        })
+        });
+
+        $('.photo-entity-delete-btn').on('click', function (e) {
+            let photoId = $(this).data('photo-id')
+                $div = $(this).parent('div');
+
+            $.ajax({
+                type: "POST",
+                url: "/CarModels/DeletePhoto",
+                data: { photoId: photoId },
+                dataType: "text",
+                success: function (msg) {
+                    $div.remove();
+                }
+            });
+        });
     });</script>
 }

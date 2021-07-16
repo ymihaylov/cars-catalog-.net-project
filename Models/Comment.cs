@@ -17,6 +17,8 @@ namespace CarsCatalog.Models
 
         public DateTime CreatedDate { get; set; }
 
+        public int CarModelId { get; set; }
+
         [ForeignKey("CarModelId")]
         public CarModel CarModel { get; set; }
 
@@ -25,7 +27,5 @@ namespace CarsCatalog.Models
         public bool Disapproved { get; set; }
 
         public string Status { get; set; } = "waiting_approval";
-
-        public int CarModelId { get; set; }
     }
 }
