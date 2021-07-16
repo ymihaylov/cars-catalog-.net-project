@@ -253,6 +253,33 @@ namespace CarsCatalog.Controllers
             return _context.CarModel.Any(e => e.Id == id);
         }
 
+        [HttpGet]
+        public IActionResult Statistics(int commentId, string actionString)
+        {
+            List<CarMakesViewsCountModel> carMakesViewsCounts = new List<CarMakesViewsCountModel>();
+            var carMakes = _context.CarMake.Include(carMake => carMake.CarModels).ToList();
+
+            foreach (var carMake in carMakes)
+            {
+                int count = 0;
+
+                foreach (var carModelTemp in carMake.CarModels)
+                {
+                    count += carModelTemp.ViewsCount;
+                }
+
+                CarMakesViewsCountModel viewsModel = new CarMakesViewsCountModel()
+                {
+                    carMake = carMake,
+                    viewsCount = count
+                };
+
+                carMakesViewsCounts.Add(viewsModel);
+            }
+
+            return View(carMakesViewsCounts);
+        }
+
         [HttpPost]
         public IActionResult ChangeCommentStatus(int commentId, string actionString)
         {

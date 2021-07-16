@@ -1,16 +1,8 @@
 ﻿<Properties StartupConfiguration="{90457B8B-028A-4E48-A613-8179560DAB2F}|Default">
   <MonoDevelop.Ide.ItemProperties.CarsCatalog PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/CarModels/Edit.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="Migrations/20210710213344_UpdateDB7.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Models/CarMake.cs" Line="1" Column="1" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="48" Column="154" />
-      <File FileName="Startup.cs" Line="89" Column="84" />
-      <File FileName="Migrations/20210716131609_UpdateDB14.cs" Line="1" Column="1" />
-      <File FileName="wwwroot/js/site.js" Line="1" Column="1" />
-      <File FileName="Controllers/HomeController.cs" Line="50" Column="53" />
-      <File FileName="Views/CarModels/Edit.cshtml" Line="87" Column="82" />
-      <File FileName="Controllers/CarModelsController.cs" Line="281" Column="39" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="33" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,12 +17,12 @@
               <Node name="Properties" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="CarModels" expanded="True">
-                  <Node name="Edit.cshtml" selected="True" />
-                </Node>
+                <Node name="CarModels" expanded="True" />
                 <Node name="Comments" expanded="True" />
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="js" expanded="True" />

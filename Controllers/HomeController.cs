@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CarsCatalog.Models;
+using CarsCatalog.ViewModels;
 
 using Microsoft.EntityFrameworkCore;
 using CarsCatalog.Context;
@@ -49,6 +50,8 @@ namespace CarsCatalog.Controllers
                 .Include(carModel => carModel.Comments.Where(comment => comment.Approved == true && comment.Disapproved == false).OrderByDescending(comment => comment.CreatedDate))
                 .Include(carModel => carModel.Photos)
                 .Single(carModel => carModel.Id == id);
+
+            _context.SaveChanges();
 
             return View(carModel);
         }

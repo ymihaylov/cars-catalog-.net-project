@@ -30,7 +30,10 @@ namespace CarsCatalog
             services.AddDbContext<CarsCatalogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MyDatabase")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<CarsCatalogContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
             services.AddRazorPages();
             
 
@@ -82,6 +85,11 @@ namespace CarsCatalog
                     name: "CarModels.ChangeCommentStatus",
                     pattern: "/CarModels/ChangeCommentStatus",
                     defaults: new { controller = "CarModels", action = "ChangeCommentStatus", });
+
+                endpoints.MapControllerRoute(
+                    name: "CarModels.Statistics",
+                    pattern: "/CarModels/Statistics",
+                    defaults: new { controller = "CarModels", action = "Statistics", });
 
                 endpoints.MapControllerRoute(
                     name: "CarModels.DeletePhoto",

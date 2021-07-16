@@ -18,6 +18,8 @@ namespace CarsCatalog.Models
 
         public int CarMakeId {get; set;}
 
+        public int ViewsCount { get; set; }
+
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Photo> Photos { get; set; }

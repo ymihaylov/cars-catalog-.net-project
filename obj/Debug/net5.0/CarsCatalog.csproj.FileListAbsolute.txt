@@ -248,3 +248,4 @@
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/Statistics/Index.cshtml.g.cs
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/Home/Search.cshtml.g.cs
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/Comments/CommentsWaitingApproval.cshtml.g.cs
+/Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/CarModels/Statistics.cshtml.g.cs

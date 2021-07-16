@@ -1,0 +1,46 @@
+﻿@model List<CarsCatalog.ViewModels.CarMakesViewsCountModel>
+
+@{ ViewData["Title"] = "Статистики";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Статистикa на марки по брой разглеждания</h1>
+<div style="max-width: 600px;">
+    <canvas id="myChart" width="200" height="200"></canvas>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+    <script>
+        var model = @Json.Serialize(Model);
+        $(document).ready(function () {
+            var model = @Json.Serialize(Model);
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var labels = [],
+                colors = [],
+                data = [];
+
+            model.forEach(function (element) {
+                labels.push(element.carMake.name);
+                colors.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+                data.push(element.viewsCount);
+            }); 
+
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Марки на коли по разглеждания',
+                        data: data,
+                        backgroundColor: colors,
+                        
+                        borderWidth: 1
+                    }]
+                }
+            });
+        });
+    </script>
+}
