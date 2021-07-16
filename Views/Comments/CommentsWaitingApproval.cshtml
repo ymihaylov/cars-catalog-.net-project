@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CarsCatalog.Models.Comment>
+
+@{
+    ViewData["Title"] = "Коментари чакащи одобрение";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Коментари чакащи одобрение</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Марка</th>
+            <th>Модел</th>
+            <th>
+                Коментар
+            </th>
+
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @*@foreach (var commentData in ViewBag.Comments as Array)
+        {
+            <tr>
+                <td>@commentData.CarMake.Name</td>
+                <td>@commentData.CarMake.Name</td>
+                <td>@commentData.CarMake.Name</td>
+
+                <td>@commentData.CarMake.Name
+                    <a class="btn btn-success">Одобри</a>
+                </td>
+            </tr>
+        }*@
+    </tbody>
+</table>

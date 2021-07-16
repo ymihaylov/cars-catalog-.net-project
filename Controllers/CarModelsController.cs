@@ -87,6 +87,7 @@ namespace CarsCatalog.Controllers
             CarModel carModel = _context
                 .CarModel
                 .Include(carModel => carModel.CarMake)
+                .Include(carModel => carModel.Comments)
                 .Single(carModel => carModel.Id == id);
 
             if (carModel == null)
@@ -101,7 +102,12 @@ namespace CarsCatalog.Controllers
                 Description = carModel.Description,
                 PhotoPath = carModel.Photo,
                 CarMakeId = new SelectList(_context.CarMake, "Id", "Name", carModel.CarMakeId),
-                SelectedCarMakeId = carModel.CarMakeId
+                SelectedCarMakeId = carModel.CarMakeId,
+                CommentsWaitingApproval = carModel
+                    .Comments
+                    .Where(comment => comment.Approved == false && comment.Disapproved == false)
+                    .OrderByDescending(comment => comment.CreatedDate)
+                    .ToList()
             };
 
             return View(carModelCrudViewModel);
@@ -189,5 +195,28 @@ namespace CarsCatalog.Controllers
         {
             return _context.CarModel.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public IActionResult ChangeCommentStatus(int commentId, string actionString)
+        {
+            var comment = _context.Comments.Single(comment => comment.Id == commentId);
+
+            if (actionString == "approve")
+            {
+                comment.Approved = true;
+            }
+
+            if (actionString == "disaprove")
+            {
+                comment.Approved = false;
+                comment.Disapproved = true; 
+            }
+
+            _context.Update(comment);
+            _context.SaveChanges();
+
+            return new OkResult();
+        }
     }
 }
+

@@ -2,19 +2,19 @@
   <MonoDevelop.Ide.ItemProperties.CarsCatalog PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Views/CarModels/Edit.cshtml">
     <Files>
-      <File FileName="Views/CarModels/Edit.cshtml" Line="43" Column="51" IsPinned="True" />
-      <File FileName="Models/CarModel.cs" />
-      <File FileName="Startup.cs" Line="33" Column="48" />
-      <File FileName="Views/_ViewStart.cshtml" />
-      <File FileName="Controllers/HomeController.cs" />
-      <File FileName="Models/CarMake.cs" />
-      <File FileName="Views/CarModels/Create.cshtml" Line="11" Column="1" />
-      <File FileName="Context/CarsCatalogContext.cs" />
-      <File FileName="Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml" Line="1" Column="1" />
-      <File FileName="CarsCatalog.csproj" Line="33" Column="41" />
-      <File FileName="Controllers/CarModelsController.cs" Line="39" Column="30" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="34" Column="92" />
-      <File FileName="Views/CarModels/Delete.cshtml" Line="1" Column="1" />
+      <File FileName="Migrations/20210710213344_UpdateDB7.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="Controllers/CommentsController.cs" Line="41" Column="26" IsPinned="True" />
+      <File FileName="Models/CarMake.cs" Line="1" Column="1" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="48" Column="154" />
+      <File FileName="Startup.cs" Line="84" Column="92" />
+      <File FileName="Program.cs" />
+      <File FileName="Models/CarModel.cs" Line="21" Column="41" />
+      <File FileName="Controllers/CarModelsController.cs" Line="108" Column="97" />
+      <File FileName="Views/CarModels/Edit.cshtml" Line="19" Column="174" />
+      <File FileName="Models/Comment.cs" Line="23" Column="33" />
+      <File FileName="Views/Home/ShowCar.cshtml" Line="1" Column="1" />
+      <File FileName="wwwroot/js/site.js" Line="34" Column="98" />
+      <File FileName="Controllers/HomeController.cs" Line="81" Column="46" />
       <File FileName="Views/CarModels/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -22,14 +22,23 @@
         <State name="__root__">
           <Node name="CarsCatalog" expanded="True">
             <Node name="CarsCatalog" expanded="True">
-              <Node name="Areas" expanded="True" />
+              <Node name="Context" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="CarModels" expanded="True">
                   <Node name="Edit.cshtml" selected="True" />
                 </Node>
+                <Node name="Comments" expanded="True" />
+                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -40,7 +49,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ymihaylov/Projects/CarsCatalog/Views/Comments/CommentsWaitingApproval.cshtml" relfile="Views/Comments/CommentsWaitingApproval.cshtml" line="24" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

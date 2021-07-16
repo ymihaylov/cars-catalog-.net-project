@@ -46,17 +46,39 @@ namespace CarsCatalog.Controllers
             CarModel carModel = _context
                 .CarModel
                 .Include(carModel => carModel.CarMake)
-                .Include(carModel => carModel.Comments.OrderByDescending(comment => comment.CreatedDate))
+                .Include(carModel => carModel.Comments.Where(comment => comment.Approved == true && comment.Disapproved == false).OrderByDescending(comment => comment.CreatedDate))
                 .Single(carModel => carModel.Id == id);
 
             return View(carModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Search(string searchString)
+        {
+            ViewData["searchString"] = searchString;
+
+            var terms = searchString.Split(" ");
+            
+            var carModels = _context
+                .CarModel
+                .Include(carModel => carModel.CarMake)
+                .AsEnumerable()
+                .Where(carModel => terms.Any(term => carModel.Name.IndexOf(term, comparisonType: StringComparison.OrdinalIgnoreCase) >= 0)
+                    || terms.Any(term => carModel.Description.IndexOf(term, comparisonType: StringComparison.OrdinalIgnoreCase) >= 0)
+                    || terms.Any(term => carModel.CarMake.Name.IndexOf(term, comparisonType: StringComparison.OrdinalIgnoreCase) >= 0)
+                )
+                .ToList();
+
+            return View(carModels);
+       }
 
         [HttpPost]
         public IActionResult PostAComment(string comment, int carModelId)
         {
             CarModel carModel = _context.CarModel.Single(carModel => carModel.Id == carModelId);
             Comment commentEntry = new Comment();
+            commentEntry.Approved = false;
+            commentEntry.Disapproved = false;
             commentEntry.CarModel = carModel;
             commentEntry.Description = comment;
 

@@ -74,6 +74,16 @@ namespace CarsCatalog
                     defaults: new { controller = "Home", action = "ShowCar", });
 
                 endpoints.MapControllerRoute(
+                    name: "search",
+                    pattern: "search",
+                    defaults: new { controller = "Home", action = "Search", });
+
+                endpoints.MapControllerRoute(
+                    name: "CarModels.ChangeCommentStatus",
+                    pattern: "/CarModels/ChangeCommentStatus",
+                    defaults: new { controller = "CarModels", action = "ChangeCommentStatus", });
+
+                endpoints.MapControllerRoute(
                     name: "post_a_comment",
                     pattern: "post_a_comment",
                     defaults: new { controller = "Home", action = "PostAComment", });
@@ -87,6 +97,7 @@ namespace CarsCatalog
                     name: "CarModels",
                     pattern: "CarModels",
                     defaults: new { controller = "CarModels", action = "CarModels", });
+
 
                 endpoints.MapRazorPages();
 

@@ -24,5 +24,7 @@ namespace CarsCatalog.ViewModels
         public int SelectedCarMakeId { get; set; }
 
         public SelectList CarMakeId { get; set; }
+
+        public List<Comment> CommentsWaitingApproval { get; set; }
     }
 }

@@ -245,3 +245,6 @@
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/CarsCatalog.pdb
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/CarsCatalog.genruntimeconfig.cache
 /Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/CarsCatalog.csproj.AssemblyReference.cache
+/Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/Statistics/Index.cshtml.g.cs
+/Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/Home/Search.cshtml.g.cs
+/Users/ymihaylov/Projects/CarsCatalog/obj/Debug/net5.0/Razor/Views/Comments/CommentsWaitingApproval.cshtml.g.cs

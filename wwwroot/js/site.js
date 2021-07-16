@@ -25,13 +25,16 @@ $(document).ready(function () {
             data: { comment: comment, carModelId: modelId },
             dataType: "text",
             success: function (msg) {
-                let now = new Date();
-                let currentComment = commentTemplate;
-                currentComment = currentComment.replace('{commentDate}', now.getDate() + '.' + now.getMonth() + '.' + now.getFullYear())
-                currentComment =currentComment.replace('{comment}', comment);
+                //let now = new Date();
+                //let currentComment = commentTemplate;
+                //currentComment = currentComment.replace('{commentDate}', now.getDate() + '.' + now.getMonth() + '.' + now.getFullYear())
+                //currentComment =currentComment.replace('{comment}', comment);
+                ////$('#comments-list').prepend(currentComment);
 
-                $('#comments-list').prepend(currentComment);
-                $('#car-comments-form-wrapper').text('Вашият коментар беше публикуван успешно!');
+                $('#car-comments-form-wrapper').text('Вашият коментар беше изпратен за одобрение успешно!');
+
+                
+                
             }
         });
     });

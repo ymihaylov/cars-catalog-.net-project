@@ -1,48 +1,89 @@
 @model CarsCatalog.ViewModels.CarModelCrudViewModel
 
 @{ ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 @section Styles {
     <link rel="stylesheet" href="~/lib/summernote/summernote.min.css" />
 }
 
-<h1>Редактиране на Car Model</h1>
+<h1>Редактиране на @Model.Name</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form enctype="multipart/form-data" asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
 
-            <div class="form-group">
-                <label asp-for="SelectedCarMakeId" class="control-label">Car Make</label>
-                <select asp-for="SelectedCarMakeId" class="form-control" asp-items="@Model.CarMakeId"></select>
-                <span asp-validation-for="SelectedCarMakeId" class="text-danger"></span>
-            </div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="home" aria-selected="true">Форма за редактиране</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pending-comments" role="tab" aria-controls="profile" aria-selected="false">Коментари чакащи одобрение (@Model.CommentsWaitingApproval.Count)</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+        <div class="row">
+            <div class="col-md-4">
+                <form enctype="multipart/form-data" asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
 
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="SelectedCarMakeId" class="control-label">Car Make</label>
+                        <select asp-for="SelectedCarMakeId" class="form-control" asp-items="@Model.CarMakeId"></select>
+                        <span asp-validation-for="SelectedCarMakeId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Photo" class="control-label"></label>
+                        <div><img width="200px" style="margin-bottom: 20px; border-radius: 4px;" src="@Model.PhotoPath" /></div>
+                        <input type="file" asp-for="Photo" class="form-control" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control" id="car-model-description-input"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Запази" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <div><img width="200px" style="margin-bottom: 20px; border-radius: 4px;" src="@Model.PhotoPath" /></div>
-                <input type="file" asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control" id="car-model-description-input"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Запази" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="pending-comments" role="tabpanel" aria-labelledby="pending-comments-tab">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Дата на публикуване</th>
+                    <th>Коментар</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in Model.CommentsWaitingApproval)
+                {
+                    <tr>
+                        <td>@comment.CreatedDate</td>
+                        <td>@comment.Description</td>
+
+                        <td>
+                            <a href="#" data-comment-id="@comment.Id" data-action="approve" class="btn btn-success comments-action">
+                                Одобри
+                            </a>
+                            <a href="#" data-comment-id="@comment.Id" data-action="disaprove" class="btn btn-danger comments-action">
+                                Отхвърли
+                            </a>
+                        </td>
+                    </tr>}
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -54,11 +95,25 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/lib/summernote/summernote.min.js"></script>
     <script>$(document).ready(function () {
-            $('#car-model-description-input').summernote({
-                height: 400,
-                width: 1000
-            });
-    });
-    </script>
+        $('#car-model-description-input').summernote({
+            height: 400,
+            width: 1000
+        });
 
+        $('.comments-action').on('click', function (e) {
+            let commentId = $(this).data('comment-id'),
+                action = $(this).data('action'),
+                $tr = $(this).parents('tr');
+
+            $.ajax({
+                type: "POST",
+                url: "/CarModels/ChangeCommentStatus",
+                data: { commentId: commentId, actionString: action },
+                dataType: "text",
+                success: function (msg) {
+                    $tr.remove();
+                }
+            });
+        })
+    });</script>
 }

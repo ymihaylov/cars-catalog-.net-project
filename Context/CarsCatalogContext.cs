@@ -14,7 +14,7 @@ namespace CarsCatalog.Context
 
         public DbSet<CarMake> CarMake { get; set; }
         public DbSet<CarModel> CarModel { get; set; }
-        public DbSet<Comment> Comments{ get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,7 @@ namespace CarsCatalog.Context
                 .HasOne(c => c.CarModel)
                 .WithMany(c => c.Comments)
                 .IsRequired()
+                .HasForeignKey(c => c.CarModelId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

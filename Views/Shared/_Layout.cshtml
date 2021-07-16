@@ -30,9 +30,9 @@
                         </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="CarModels" asp-action="Index">Администриране на каталога</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="CarModels" asp-action="Index">Администриране на каталога</a>
+                            </li>
                         }
                     </ul>
                     <partial name="_LoginPartial" />
@@ -43,6 +43,14 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            <form method="GET" action="/search">
+                <div class="input-group mb-3">
+                    <input value="@ViewData["searchString"]" type="text" class="form-control" name="searchString" placeholder="Търсене на коли в каталога" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit">Търсене</button>
+                    </div>
+                </div>
+            </form>
             @RenderBody()
         </main>
     </div>

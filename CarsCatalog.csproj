@@ -16,6 +16,7 @@
     <None Remove="Views\Admin\" />
     <None Remove="CoreAdmin" />
     <None Remove="ViewModels\" />
+    <None Remove="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Coravel.Pro" Version="4.0.2" />
@@ -44,6 +45,7 @@
     <Folder Include="PostdData\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\uploads\" />
