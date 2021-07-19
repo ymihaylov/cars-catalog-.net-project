@@ -1,8 +1,18 @@
 ﻿<Properties StartupConfiguration="{90457B8B-028A-4E48-A613-8179560DAB2F}|Default">
   <MonoDevelop.Ide.ItemProperties.CarsCatalog PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
     <Files>
-      <File FileName="Views/Shared/_Layout.cshtml" Line="33" Column="34" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="24" Column="47" />
+      <File FileName="Controllers/StatisticsController.cs" />
+      <File FileName="Controllers/CarModelsController.cs" Line="18" Column="22" />
+      <File FileName="ViewModels/CarMakesViewsCountModel.cs" />
+      <File FileName="Views/Statistics/Index.cshtml" />
+      <File FileName="Views/CarModels/Statistics.cshtml" />
+      <File FileName="ViewModels/CarModelCrudViewModel.cs" />
+      <File FileName="Context/CarsCatalogContext.cs" />
+      <File FileName="Controllers/HomeController.cs" Line="55" Column="38" />
+      <File FileName="Startup.cs" />
+      <File FileName="Models/CarModel.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,19 +20,16 @@
           <Node name="CarsCatalog" expanded="True">
             <Node name="CarsCatalog" expanded="True">
               <Node name="Context" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Migrations" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="CarModels" expanded="True" />
-                <Node name="Comments" expanded="True" />
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="Statistics" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="js" expanded="True" />
@@ -30,9 +37,6 @@
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

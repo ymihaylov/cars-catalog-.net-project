@@ -11564,7 +11564,7 @@
       "outputPath": "/Users/ymihaylov/Projects/CarsCatalog/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/ymihaylov/.nuget/NuGet/NuGet.Config"
+        "/Users/ymihaylov/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

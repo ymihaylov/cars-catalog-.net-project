@@ -44,13 +44,19 @@ namespace CarsCatalog.Controllers
 
         public async Task<IActionResult> ShowCarAsync(int id)
         {
+            var comments = _context
+                .Comments
+                .Include(c => c.CarModel)
+                .ToList();
+
             CarModel carModel = _context
                 .CarModel
                 .Include(carModel => carModel.CarMake)
                 .Include(carModel => carModel.Comments.Where(comment => comment.Approved == true && comment.Disapproved == false).OrderByDescending(comment => comment.CreatedDate))
                 .Include(carModel => carModel.Photos)
                 .Single(carModel => carModel.Id == id);
-
+            carModel.ViewsCount++;
+            _context.CarModel.Update(carModel);
             _context.SaveChanges();
 
             return View(carModel);
